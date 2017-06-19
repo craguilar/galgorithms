@@ -1,5 +1,6 @@
 package mstrings
 
+import "strings"
 
 func TwoChars(n int , text string) int{
 
@@ -45,4 +46,18 @@ func checkAlternate( s string) bool{
 		first=rune(s[i])
 	}
 	return isAlternate
+}
+func CamelCase ( text string ) int {
+	// 0 length string
+	if text==""{
+		return 0
+	}
+	c:=1
+	//iterate over the string
+	for i, _ := range text {
+		if string(text[i]) == strings.ToUpper(string(text[i])){
+			c++
+		}
+	}
+	return c
 }
