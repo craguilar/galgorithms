@@ -6,7 +6,7 @@ func TestCollatzConjecture(t *testing.T) {
 
 	result := CollatzConjecture(3)
 	if !equals(result, []int{3, 10, 5, 16, 8, 4, 2, 1}) {
-		t.Fatalf(`Array %v is not sorted`, result)
+		t.Fatalf(`Invalid sequence %v`, result)
 	}
 }
 
