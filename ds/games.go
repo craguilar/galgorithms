@@ -1,4 +1,4 @@
-package graphs
+package ds
 
 // In a tennis tournament of N players every player plays with every other player.
 // The following condition always hold:
@@ -7,19 +7,19 @@ package graphs
 func FindWinner(games [][]int) int {
 	g := NewGraph()
 	for _, game := range games {
-		winner := Node{game[0]}
-		looser := Node{game[1]}
-		g.AddNode(&winner)
-		g.AddNode(&looser)
-		g.AddEdge(&winner, &looser)
+		winner := game[0]
+		looser := game[1]
+		g.AddNode(winner)
+		g.AddNode(looser)
+		g.AddEdge(winner, looser)
 	}
 	// Find player with max degree
 	winner := -1
 	min_degree := 0
-	for _, node := range g.nodes {
-		if len(g.edges[*node]) > min_degree {
-			winner = node.value
-			min_degree = len(g.edges[*node])
+	for node, neighbors := range g.nodes {
+		if len(neighbors) > min_degree {
+			winner = node
+			min_degree = len(neighbors)
 		}
 	}
 
@@ -31,11 +31,11 @@ func ListRank(games [][]int) []int {
 	g := NewGraph()
 	// Build graph
 	for _, game := range games {
-		winner := Node{game[0]}
-		looser := Node{game[1]}
-		g.AddNode(&winner)
-		g.AddNode(&looser)
-		g.AddEdge(&winner, &looser)
+		winner := game[0]
+		looser := game[1]
+		g.AddNode(winner)
+		g.AddNode(looser)
+		g.AddEdge(winner, looser)
 	}
 	return g.TopSort()
 }

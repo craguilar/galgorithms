@@ -1,4 +1,4 @@
-package graphs
+package ds
 
 import "testing"
 
@@ -12,17 +12,17 @@ func TestFindWinner(t *testing.T) {
 func TestListRankr(t *testing.T) {
 
 	rank := ListRank([][]int{{3, 1}, {2, 3}})
-	if !equals(rank, []int{2, 3, 1}) {
+	if !arrayEquals(rank, []int{2, 3, 1}) {
 		t.Fatalf(`Incorrect result %v`, rank)
 	}
 
 	rank = ListRank([][]int{{2, 3}, {1, 2}})
-	if !equals(rank, []int{1, 2, 3}) {
+	if !arrayEquals(rank, []int{1, 2, 3}) {
 		t.Fatalf(`Incorrect result %v`, rank)
 	}
 }
 
-func equals(a, b []int) bool {
+func arrayEquals(a, b []int) bool {
 	if len(a) != len(b) {
 		return false
 	}
